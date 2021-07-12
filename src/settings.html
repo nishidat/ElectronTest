@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Mamoru Biz</title>
+  </head>
+  <body style="text-align: center;">
+    <input type="time" id="timeValue" name="set-time" value="09:50">
+    <button id="set-time">Set</button>
+  </body>
+  <script type = "text/javascript">
+    //適当なプログラム
+    const button = document.getElementById("set-time");
+    const timeValue = document.getElementById("timeValue");
+    button.addEventListener("click", (e)=>{
+      window.api.send(timeValue.value);
+      window.close();
+    });
+    window.api.on("setDefaultTime", (arg)=>{
+      document.getElementById("timeValue").value = arg.defaultTime;
+    });
+   </script>
+</html>
